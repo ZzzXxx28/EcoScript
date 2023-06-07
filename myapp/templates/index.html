@@ -1,10 +1,14 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Ecobot</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="{% static 'my_app/style.css' %}" rel="stylesheet">
+    <script src="{% static 'my_app/script.js' %}"></script>
+
 </head>
 <body>
     <header>
@@ -12,6 +16,10 @@
             <button class="user_button" id="user-button"><i class="far fa-user-circle" id="user-icon"></i></button>
         </div>
     </header>
+    <div class="center">
+        <h1>EcoBot</h1>
+    </div>
+    
     <div id="overlay" class="hidden"></div>
     <div id="login-popup" class="hidden">
         <!-- Your login form goes here -->
@@ -30,11 +38,6 @@
         <canvas id="canvas" width="640" height="480"></canvas>
         <button id="capture-icon"><i class="fas fa-camera-retro"></i></button>
     </div>
-    <script src="js/script.js"></script>
-    <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="file">
-        <button type="submit">Upload</button>
-    </form>
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>
