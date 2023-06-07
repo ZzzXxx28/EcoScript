@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ecobot</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <button class="user_button" id="user-button"><i class="far fa-user-circle" id="user-icon"></i></button>
+        </div>
+    </header>
+    <div id="overlay" class="hidden"></div>
+    <div id="login-popup" class="hidden">
+        <!-- Your login form goes here -->
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <button id="camera-icon"><i class="fas fa-camera"></i></button>
+    <div id="video-container" style="display: none;">
+        <video id="video" width="640" height="480" autoplay></video>
+        <button id="close-icon"><i class="fas fa-times-circle"></i></button>
+        <canvas id="canvas" width="640" height="480"></canvas>
+        <button id="capture-icon"><i class="fas fa-camera-retro"></i></button>
+    </div>
+    <script src="js/script.js"></script>
+    <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file">
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
